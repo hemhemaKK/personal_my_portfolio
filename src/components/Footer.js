@@ -1,4 +1,3 @@
-import React from "react";
 import { FaGithub, FaLinkedin, FaHackerrank, FaEnvelope, FaFacebook, FaInstagram } from "react-icons/fa";
 
 

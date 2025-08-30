@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import { FaReact, FaNodeJs, FaGithub, FaPython, FaJs } from "react-icons/fa";
 import { SiFirebase, SiMongodb, SiPostman } from "react-icons/si";

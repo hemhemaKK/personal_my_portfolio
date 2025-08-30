@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { FaGithub, FaLinkedin, FaHackerrank, FaBars, FaTimes } from "react-icons/fa";
 import AboutMe from "./About";
 import Showcase from "./Certifications";
