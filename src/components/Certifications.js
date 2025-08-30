@@ -21,9 +21,9 @@ export default function Showcase() {
                 <div className="line">
                   <h6 className="para">
                     <font color="skyblue">1. Masai</font> – MERN Full-Stack Training (Pursuing)<br />
-                    <font color="skyblue">2. HackerRank </font>– Python, JavaScript & <br />Problem Solving
+                    <font color="skyblue">2. HackerRank </font>– Python, JavaScript <br /> & Problem Solving - 
                     <a href="https://www.hackerrank.com/certificates/588bd59a1fb3" target="_blank" rel="noreferrer">
-                      Show Credentials
+                       Show Credentials
                     </a><br />
                     <font color="skyblue">3. Python | AI </font>– Hardware Technology<br />
                     <font color="skyblue">4. AWS</font> Cloud Practitioner –
@@ -79,7 +79,7 @@ export default function Showcase() {
                     🧠 Data Analysis & Cleaning<br/>
                     🤖 Machine Learning Models <br/>
                     📊 Visualization & Insights <br/>
-                    💡 Problem Solving
+                    💡 Problem Solving - 
                       <a href="https://nyinst.com/certificate?id=fUCcEG" target="_blank" rel="noreferrer">
                       Show Credentials
                     </a>
