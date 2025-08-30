@@ -1,7 +1,7 @@
 export default function Showcase() {
   return (
     <section className="showcase" id="showcase">
-      <h2 className="section-title">Certificates, Achievements & Works</h2>
+      <h2 className="showcase-title">Certificates, Achievements & Works</h2>
 
       <div className="showcase-container">
 
