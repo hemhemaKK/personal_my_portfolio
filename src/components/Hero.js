@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { FaGithub, FaLinkedin, FaHackerrank, FaBars, FaTimes } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaBars, FaTimes } from "react-icons/fa";
+import { ReactTyped } from "react-typed"; 
 import AboutMe from "./About";
 import Showcase from "./Certifications";
 import Projects from "./Projects";
@@ -10,11 +11,8 @@ export default function Hero() {
 
   const handleResumeDownload = () => {
     const fileUrl = "/Hemavathi-K.pdf";
-
-    // Open PDF in new tab
     window.open(fileUrl, "_blank");
 
-    // Trigger automatic download
     const link = document.createElement("a");
     link.href = fileUrl;
     link.download = "HemavathiK_Resume.pdf";
@@ -39,36 +37,26 @@ export default function Hero() {
   };
 
   return (
-    <>
     <div className="page-wrapper">
+      {/* Background video */}
       <video autoPlay loop muted playsInline className="video-bg">
         <source src="/assets/port.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
+
       {/* Hero Section */}
       <section id="home" className="hero">
-        {/* Background Video */}
-
-
         {/* Navbar */}
         <nav className="Navbar">
-          <div className="logo">
-            <h2>Hemavathi K</h2>
-          </div>
 
           <div className={`nav-links ${menuOpen ? "active" : ""}`}>
             <ul>
               <li><a href="#home" onClick={() => setMenuOpen(false)}>Home</a></li>
               <li><a href="#about" onClick={() => setMenuOpen(false)}>About</a></li>
+              <li><a href="#skills" onClick={() => setMenuOpen(false)}>Skills</a></li>
               <li><a href="#projects" onClick={() => setMenuOpen(false)}>Projects</a></li>
               <li><a href="#contact" onClick={() => { handleContactClick(); setMenuOpen(false); }}>Contact</a></li>
             </ul>
-          </div>
-
-          <div className="hero-social-icons">
-            <a href="https://github.com/hemhemaKK" target="_blank"><FaGithub /></a>
-            <a href="https://www.linkedin.com/in/hemavathi-k-a8475924b" target="_blank"><FaLinkedin /></a>
-            <a href="https://www.hackerrank.com/profile/hemavathikrishn1" target="_blank"><FaHackerrank /></a>
           </div>
 
           <div className="hamburger" onClick={toggleMenu}>
@@ -76,25 +64,57 @@ export default function Hero() {
           </div>
         </nav>
 
-        {/* Profile Image */}
-        <img src="/assets/profile.png" alt="Profile" className="profile-img" />
-
-        {/* Overlay */}
+        {/* Overlay Text */}
         <div className="overlay">
-          <h1>Hello, I'm <span style={{ color: "skyblue" }}>Hemavathi K</span></h1><br />
+          <h1>Hi, I’m <span style={{ color: "skyblue" }}>Hemavathi K</span></h1>
+          <h2>Aspiring Software Developer</h2>
+
+          {/* Typing Effect */}
           <h3>
-            MCA Graduate | Aspiring Full-Stack Developer | <br />
-            Future-Focused Software Developer | Passionate About Web Development, Clean Code & Real-World Problem Solving
-          </h3><br />
+            <ReactTyped
+              strings={[
+                "Passionate about Development",
+                "Full Stack Developer",
+                "Future-Focused Software Engineer",
+                "Lifelong Learner"
+              ]}
+              typeSpeed={50}
+              backSpeed={30}
+              backDelay={1200}
+              loop
+            />
+          </h3>
+
+          {/* Resume Button */}
           <button onClick={handleResumeDownload}>Check on Resume</button>
+
+          {/* Social Buttons */}
+          <div className="hero-social-buttons">
+            <a
+              href="https://www.linkedin.com/in/hemavathi-k-a8475924b"
+              target="_blank"
+              rel="noreferrer"
+              className="social-btn linkedin"
+            >
+              <FaLinkedin />
+            </a>
+            <a
+              href="https://github.com/hemhemaKK"
+              target="_blank"
+              rel="noreferrer"
+              className="social-btn github"
+            >
+              <FaGithub /> 
+            </a>
+          </div>
         </div>
       </section>
 
+      {/* Other Sections */}
       <section id="about"><AboutMe /></section>
-      <section id="showcase"><Showcase /></section>
       <section id="projects"><Projects /></section>
+      <section id="showcase"><Showcase /></section>
       <Footer />
-      </div>
-    </>
+    </div>
   );
 }
