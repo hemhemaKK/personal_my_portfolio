@@ -71,7 +71,7 @@ export default function Showcase() {
               muted
             /></div>
             <div className="border">
-              <p className="title">Internships</p>
+              <p className="title">Experience</p>
               <div className="slide">
                 <div className="line">
                   <h6 className="para">

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaGithub, FaLinkedin, FaBars, FaTimes } from "react-icons/fa";
 import { ReactTyped } from "react-typed"; 
 import AboutMe from "./About";
@@ -8,6 +8,7 @@ import Footer from "./Footer";
 
 export default function Hero() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
 
   const handleResumeDownload = () => {
     const fileUrl = "/Hemavathi-K.pdf";
@@ -32,9 +33,25 @@ export default function Hero() {
     window.open(gmailUrl, "_blank");
   };
 
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+
+  // --- ScrollSpy ---
+  useEffect(() => {
+    const sections = document.querySelectorAll("section[id]");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => sections.forEach((section) => observer.unobserve(section));
+  }, []);
 
   return (
     <div className="page-wrapper">
@@ -48,14 +65,53 @@ export default function Hero() {
       <section id="home" className="hero">
         {/* Navbar */}
         <nav className="Navbar">
-
           <div className={`nav-links ${menuOpen ? "active" : ""}`}>
             <ul>
-              <li><a href="#home" onClick={() => setMenuOpen(false)}>Home</a></li>
-              <li><a href="#about" onClick={() => setMenuOpen(false)}>About</a></li>
-              <li><a href="#skills" onClick={() => setMenuOpen(false)}>Skills</a></li>
-              <li><a href="#projects" onClick={() => setMenuOpen(false)}>Projects</a></li>
-              <li><a href="#contact" onClick={() => { handleContactClick(); setMenuOpen(false); }}>Contact</a></li>
+              <li>
+                <a 
+                  href="#home" 
+                  className={activeSection === "home" ? "active-nav" : ""}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Home
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#about" 
+                  className={activeSection === "about" ? "active-nav" : ""}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  About
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#skills" 
+                  className={activeSection === "skills" ? "active-nav" : ""}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Skills
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#projects" 
+                  className={activeSection === "projects" ? "active-nav" : ""}
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Projects
+                </a>
+              </li>
+              <li>
+                <a 
+                  href="#contact" 
+                  className={activeSection === "contact" ? "active-nav" : ""}
+                  onClick={() => { handleContactClick(); setMenuOpen(false); }}
+                >
+                  Contact
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -69,7 +125,6 @@ export default function Hero() {
           <h1>Hi, I’m <span style={{ color: "skyblue" }}>Hemavathi K</span></h1>
           <h2>Aspiring Software Developer</h2>
 
-          {/* Typing Effect */}
           <h3>
             <ReactTyped
               strings={[
@@ -85,25 +140,13 @@ export default function Hero() {
             />
           </h3>
 
-          {/* Resume Button */}
           <button onClick={handleResumeDownload}>Check on Resume</button>
 
-          {/* Social Buttons */}
           <div className="hero-social-buttons">
-            <a
-              href="https://www.linkedin.com/in/hemavathi-k-a8475924b"
-              target="_blank"
-              rel="noreferrer"
-              className="social-btn linkedin"
-            >
+            <a href="https://www.linkedin.com/in/hemavathi-k-a8475924b" target="_blank" rel="noreferrer" className="social-btn linkedin">
               <FaLinkedin />
             </a>
-            <a
-              href="https://github.com/hemhemaKK"
-              target="_blank"
-              rel="noreferrer"
-              className="social-btn github"
-            >
+            <a href="https://github.com/hemhemaKK" target="_blank" rel="noreferrer" className="social-btn github">
               <FaGithub /> 
             </a>
           </div>
