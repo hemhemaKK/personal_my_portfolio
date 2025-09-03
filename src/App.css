@@ -48,17 +48,13 @@ body {
   background-color: #003b3b;
 }
 
-.Navbar h2 {
-  color: #fff;
-}
-
 .nav-links {
   margin-left: auto;
 }
 
 .nav-links ul {
   display: flex;
-  gap: 50px;
+  gap: 100px;
   list-style: none;
 }
 
@@ -68,6 +64,7 @@ body {
   color: #fff;
   text-decoration: none;
   transition: color 0.3s;
+  font-weight: bold;
 }
 
 .Navbar ul li a:hover,
@@ -101,8 +98,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 50px; /* space between profile and overlay */
-  flex-wrap: wrap; /* stack on small screens */
+  gap: 50px;
+  flex-wrap: wrap;
   width: 100%;
   max-width: 1200px;
   padding: 20px;
@@ -114,9 +111,11 @@ body {
   color: #fff;
   padding: 20px;
   border-radius: 10px;
-  background-color: rgba(0, 53, 54, 1);
+  background-color: rgba(0, 53, 54, 0.9);
   max-width: 600px;
   width: 100%;
+  z-index: 2;
+  position: relative;
 }
 
 .overlay h1 {
@@ -177,9 +176,27 @@ body {
   transform: scale(1.1);
 }
 
+/* ---------- Blur Overlay ---------- */
+.blur-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(5px);
+  background: rgba(0,0,0,0.2);
+  z-index: 5; /* below hamburger menu but above content */
+  display: none;
+  transition: all 0.3s ease;
+}
+
+.blur-overlay.active {
+  display: block;
+}
+
 /* ---------- Responsive Media Queries ---------- */
 @media screen and (max-width: 1024px) {
-  .overlay h1 { font-size: 2rem; }
+  .overlay h1 { font-size: 2.5rem; }
   .overlay h2 { font-size: 1.8rem; }
   .overlay h3 { font-size: 1.2rem; }
   .profile-img { width: 300px; height: 400px; }
@@ -196,12 +213,12 @@ body {
     background: #003b3b;
     position: absolute;
     top: 60px;
-    right: 20px; /* small margin from edge */
+    right: 20px;
     width: 200px;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    z-index: 15; /* below hamburger so close icon is clickable */
+    z-index: 15;
   }
 
   .nav-links.active {
@@ -225,6 +242,7 @@ body {
   .profile-img { width: 200px; height: 280px; }
   .hero-social-buttons { gap: 10px; }
 }
+
 
 
 /* ---------- About Me ---------- */
@@ -280,7 +298,7 @@ body {
 
 .profile-img {
   width: 300px;
-  height: 400px;
+  height: 390px;
   border-radius: 10%;
   border: 4px solid white;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
@@ -362,6 +380,7 @@ body {
   transform: translateY(-10px) scale(1.05);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
   background: rgba(0, 0, 0, 0.8);
+  width: 100%;
 }
 
 /* ---------- Animations ---------- */
@@ -383,7 +402,7 @@ body {
 
   .profile-img {
     width: 250px;
-    height: 350px;
+    height: 300px;
   }
 
   .about-title {
@@ -403,11 +422,24 @@ body {
   .tools-subtitle {
     font-size: 1.5rem;
   }
+  .tools-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+
+  .tool-card {
+    width: 120px;
+    height: 120px;
+  }
+
+  .tool-card img {
+    width: 60px;
+    height: 60px;
+  }
 }
 
 @media screen and (max-width: 600px) {
   .profile-img {
-    width: 200px;
+    width: 220px;
     height: 300px;
   }
 
@@ -543,6 +575,7 @@ body {
   line-height: 1.5;
   white-space: pre-wrap;
   overflow-wrap: break-word;
+  font-family: 'Times New Roman', Times, serif;
 }
 .project-desc h1{
     font-size: 1.2rem;
@@ -552,7 +585,7 @@ body {
 /* ---------- MEDIA QUERIES ---------- */
 @media (max-width: 1024px) {
   .project-video {
-    height: 180px;
+    height: 350px;
   }
   .overlay1 {
     padding: 15px;
@@ -571,7 +604,7 @@ body {
     grid-template-columns: 1fr;
   }
   .project-video {
-    height: 220px;
+    height: 300px;
   }
   .project-links a {
     font-size: 13px;
@@ -847,6 +880,12 @@ h6.para,
   p.title {
     font-size: 1.5rem;
   }
+  .card-video {
+  width: 110%;
+}
+.border {
+  width: 110%;
+}
 }
 
 @media screen and (max-width: 480px) {

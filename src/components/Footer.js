@@ -8,13 +8,21 @@ export default function Footer() {
     e.preventDefault();
     const form = e.target;
 
-    fetch("/", {
+    const formData = {
+      name: form.name.value,
+      email: form.email.value,
+      message: form.message.value,
+    };
+
+    // Send data to your SMTP backend
+    fetch("https://smtp-mail-xcpz.onrender.com/contact", {
       method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams(new FormData(form)).toString(),
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(formData),
     })
-      .then(() => {
-        setFormStatus("Message sent successfully!");
+      .then((res) => res.json())
+      .then((data) => {
+        setFormStatus(data.message);
         form.reset();
         setTimeout(() => setFormStatus(""), 3000);
       })
@@ -27,13 +35,14 @@ export default function Footer() {
   return (
     <footer>
       <div className="footer-container">
-        {/* Contact */}
+        {/* Contact Info */}
         <div className="footer-section">
           <h3>Contact Me</h3>
           <p>
             <FaEnvelope /> &nbsp;
-            <a href="mailto:hemavathikrishnan2627@gmail.com">hemavathikrishnan2627@gmail.com</a>
-            
+            <a href="mailto:hemavathikrishnan2627@gmail.com">
+              hemavathikrishnan2627@gmail.com
+            </a>
           </p>
           <div className="social-icons">
             <a href="https://github.com/hemhemaKK" target="_blank" rel="noreferrer"><FaGithub /></a>
@@ -44,7 +53,6 @@ export default function Footer() {
           </div>
           <center><h3>Hemavathi K</h3></center>
           <p>Aspiring Full-Stack Developer | Passionate About Web Development & Clean Code</p>
-       
         </div>
 
         {/* Quick Links */}
@@ -62,19 +70,15 @@ export default function Footer() {
         {/* Contact Form */}
         <div className="footer-section">
           <h3>Send Me a Message</h3>
-          <form 
-            name="contact" 
-            method="POST" 
-            data-netlify="true"
-            onSubmit={handleSubmit}
-          >
-            <input type="hidden" name="form-name" value="contact" />
+          <form onSubmit={handleSubmit}>
             <input type="text" name="name" placeholder="Your Name" required />
             <input type="email" name="email" placeholder="Your Email" required />
             <textarea name="message" placeholder="Your Message" required></textarea>
             <button type="submit">Send</button>
           </form>
-          {formStatus && <p style={{ marginTop: "10px", color: "#00f7ff" }}>{formStatus}</p>}
+          {formStatus && (
+            <p style={{ marginTop: "10px", color: "#00f7ff" }}>{formStatus}</p>
+          )}
         </div>
       </div>
 

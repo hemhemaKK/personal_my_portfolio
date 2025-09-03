@@ -52,8 +52,10 @@ const projects = [
 💡 Demo Flow:
 1️⃣ Run predictions with sample test cases.
 2️⃣ Display prediction results clearly.
+3️⃣ Admin dashboard to manage users and doctors appointments.
 - Tech Stack: Python, Django (UI), DB-Browser, ML classification models`,
     video: "https://res.cloudinary.com/dbftgtgs9/video/upload/v1756538980/thyroid_zavtay.mp4",
+    liveLink: "",
     githubLink: "https://github.com/hemhemaKK/ThyroidDisease-Check",
     techIcons: [<FaPython />, <FaJs />, <SiPostman />],
   },
@@ -76,7 +78,16 @@ export default function Projects() {
               <video src={project.video} autoPlay loop muted playsInline />
               <div className="overlay1">
                 <h3>{project.title}</h3>
-                <div className="project-links">
+                <div className="tech-icons">
+                  {project.techIcons.map((icon, idx) => (
+                    <span key={idx} className="tech-icon">{icon}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <pre className="project-desc">
+              <h1>{project.title}<div className="project-links">
                   {project.liveLink && (
                     <a href={project.liveLink} target="_blank" rel="noreferrer" className="project-link">
                       Live Demo
@@ -87,16 +98,7 @@ export default function Projects() {
                       <FaGithub /> Code
                     </a>
                   )}
-                </div>
-                <div className="tech-icons">
-                  {project.techIcons.map((icon, idx) => (
-                    <span key={idx} className="tech-icon">{icon}</span>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            <pre className="project-desc"><h1>{project.title}</h1>
+                </div></h1>
                                          {project.description}
                                          <div className="tech-icons">
         {project.techIcons.map((icon, idx) => (

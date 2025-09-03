@@ -53,6 +53,28 @@ export default function Hero() {
     return () => sections.forEach((section) => observer.unobserve(section));
   }, []);
 
+  // --- Prevent body scroll and blur when menu open ---
+  useEffect(() => {
+    if (menuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+  }, [menuOpen]);
+
+  // --- Close menu if clicked outside ---
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      const nav = document.querySelector(".nav-links");
+      const hamburger = document.querySelector(".hamburger");
+      if (menuOpen && !nav.contains(e.target) && !hamburger.contains(e.target)) {
+        setMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [menuOpen]);
+
   return (
     <div className="page-wrapper">
       {/* Background video */}
@@ -60,6 +82,9 @@ export default function Hero() {
         <source src="/assets/port.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
+
+      {/* Blur overlay */}
+      <div className={`blur-overlay ${menuOpen ? "active" : ""}`}></div>
 
       {/* Hero Section */}
       <section id="home" className="hero">
