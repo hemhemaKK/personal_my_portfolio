@@ -1,4 +1,4 @@
-import { FaGithub, FaLinkedin, FaHackerrank, FaEnvelope, FaFacebook, FaInstagram } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaHackerrank, FaEnvelope } from "react-icons/fa";
 import { useState } from "react";
 
 export default function Footer() {
@@ -45,19 +45,44 @@ export default function Footer() {
             </a>
           </p>
           <div className="social-icons">
-            <a href="https://github.com/hemhemaKK" target="_blank" rel="noreferrer"><FaGithub /></a>
-            <a href="https://www.linkedin.com/in/hemavathi-k-a8475924b/" target="_blank" rel="noreferrer"><FaLinkedin /></a>
-            <a href="https://www.hackerrank.com/profile/hemavathikrishn1" target="_blank" rel="noreferrer"><FaHackerrank /></a>
+            <a
+              href="https://github.com/hemhemaKK"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaGithub />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/hemavathi-k-a8475924b/"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaLinkedin />
+            </a>
+            <a
+              href="https://www.hackerrank.com/profile/hemavathikrishn1"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaHackerrank />
+            </a>
           </div>
-          <center><h1><font color="white">Hemavathi K</font></h1></center>
-          <p>Aspiring Full-Stack Developer | Passionate About Web Development & Clean Code</p>
+          <center>
+            <h1>
+              <font color="white">Hemavathi K</font>
+            </h1>
+          </center>
+          <p>
+            Aspiring Full-Stack Developer | Passionate About Web Development &
+            Clean Code
+          </p>
         </div>
 
         {/* Quick Links */}
         <div className="footer-section">
           <h3>Quick Links</h3>
           <ul style={{ listStyle: "none", padding: 0 }}>
-            {["Home", "About","Skills", "Projects"].map((item, idx) => (
+            {["Home", "About", "Skills", "Projects"].map((item, idx) => (
               <li key={idx} style={{ marginBottom: "8px" }}>
                 <a href={`#${item.toLowerCase()}`}>{item}</a>
               </li>
