@@ -20,7 +20,7 @@ export default function AboutMe() {
                 <img src="/assets/profile.png" alt="Profile" className="profile-img" />
 
                 <div><p className="about-text"><br/>
-                    I am an <span>MCA graduate</span> from <span>Bangalore</span> and an <span>aspiring Full-Stack Developer</span> with a specialization in the <span>MERN stack</span>. I also bring a strong foundation in <span>Python</span> and have completed an internship in <span>Data Science (Machine Learning</span> & <span>AI)</span>, gaining hands-on experience in <span>problem solving, predictive modeling</span> and <span>data analysis automation</span>.<br /><br />
+                    I am an <span>MCA graduate</span> from <span>Bangalore</span> and an <span>aspiring Full-Stack Developer</span> with a specialization in the <span>MERN full-stack</span>. I also bring a strong foundation in <span>JavaScript</span> and have completed an internship in <span>Data Science (Python, Machine Learning</span> & <span>AI)</span>, gaining hands-on experience in <span>problem solving, predictive modeling</span> and <span>data analysis automation</span>.<br /><br />
 
                     I am skilled in building robust, scalable web applications using <span>React, Redux</span>, <span>Node.js</span>, <span>Express</span>, and <span>MongoDB</span>, and I have experience designing <span>RESTful APIs</span> and implementing <span>secure authentication systems</span>. I am proficient in modern frontend technologies (<span>HTML</span>, <span>CSS</span>, <span>JavaScript</span>) and backend programming, with a keen eye for <span>responsive</span> and <span>intuitive UI design</span>.<br /><br />
 
